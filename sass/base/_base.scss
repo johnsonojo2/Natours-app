@@ -1,0 +1,46 @@
+*,
+*::after,
+*::before{
+    margin:0;
+    padding:0;
+    box-sizing: inherit;
+}
+
+html{
+
+    //defines what one rem should be. 
+    /*normally 1rem==16px but i wanted 10px hence
+    10px/16px=0.625 which is equal to 62.5%. now in our web page 1rem==10px*/
+
+    font-size:62.5%; //1rem==10px
+    
+    @include respond(tab-land){
+        font-size:56.25%;  //1rem==9px ==9/16 ==56.25%
+        
+    } 
+
+    @include respond(tab-port){
+        font-size:50%; //1rem==8px ==8/16 ==50%
+        
+    }
+
+    @include respond(big-desktop){
+        font-size:75%;  //1rem==12px ==12/16 ==75%
+        
+    }
+}
+
+body{
+    
+    box-sizing: border-box;
+    padding:3rem;
+
+    @include respond(tab-port){
+        padding:0;
+    }
+}
+
+::selection{
+    background-color: $primary-color;
+    color: $color-white;
+}

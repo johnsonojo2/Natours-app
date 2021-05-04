@@ -1,0 +1,47 @@
+@mixin clearfix{
+    &::after{
+        content:"";
+        display:table;
+        clear:both;
+    }
+}
+@mixin absolutecenter{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+
+
+// the mixins below are to make the website responsive
+
+/* 
+
+Break Points
+
+0 - 600px             Phone
+600 - 900px           tablet portrait written as tab-port
+900 - 1200px          Tablet land-scape written as tab-land 
+1200 - 1800px         Is what we have already designed for 
+1800px - infinity     big-desktop
+
+*/
+//1em = 16px  especially for media queries ems are the best.
+
+@mixin respond($breakpoint){
+    @if $breakpoint==phone{
+        @media only screen and (max-width:37.5em){ @content };
+    }
+    @if $breakpoint==tab-land{
+        @media only screen and (max-width:75em){ @content };
+    }
+
+    @if $breakpoint==tab-port{
+        @media only screen and (max-width:56.5em){ @content };
+    }
+
+    @if $breakpoint==big-desktop{
+        @media only screen and (min-width:112.5em){ @content };
+    }
+
+} 
